@@ -20,19 +20,12 @@ canvas{
  <BODY>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.1/dat.gui.js"></script> 
   <!--
- reference : http://jamie-wong.com/2014/08/19/metaballs-and-marching-squares/
-
- github : https://github.com/megashrieks/meta-bubbles
--->
-<canvas id="can"></canvas>
-  <script>
-  var can = document.getElementById("can");
+ reference : http://jamie-wong.com/2014/08/19/metaballs-and-marching-squa
 var ctx = can.getContext("2d");
 
 var arr = [];
 var grid = [];
-let drag = 1000;
-var settings = {
+let drag = 
     "grid size": 5,
     circles: 50,
     delay: 50,
@@ -40,52 +33,8 @@ var settings = {
 }, settings_copy = {};
 function gui() {
     var g = new dat.GUI();
-    g.add(settings, "grid size", 3, 30).step(1);
-    g.add(settings, "circles", 1, 100).step(1);
-    g.add(settings, "delay", 1, 1000).step(1);
-    g.add(settings, "show");
-}
-gui();
-class Circle {
-    constructor() {
-        this.x = 50 + ~~(Math.random() * (can.width - 100));
-        this.y = 50 + ~~(Math.random() * (can.height - 100));
-        this.radius = 10 + ~~(Math.random() * 20);
-        this.target = {
-            x: can.width / 2,
-            y: can.height / 2
-        };
-        this.directions = [1, -1]
-        this.vel = {
-            x: 3 * Math.random() * this.directions[~~(Math.random() * 2)],
-            y: 3 * Math.random() * this.directions[~~(Math.random() * 2)]
-        };
-    }
-    update() {
-        this.vel.x = (-this.x + this.target.x) / (drag * (this.radius / 15) / 10);
-        this.vel.y = (-this.y + this.target.y) / (drag * (this.radius / 15) / 10);
-        this.x += this.vel.x;
-        this.y += this.vel.y;
-    }
-    draw() {
-        ctx.beginPath();
-        ctx.strokeStyle = "#000";
-        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI * 2);
-        ctx.stroke();
-        ctx.closePath();
-    }
-}
-
-function setup() {
-    // arr = [];
-    grid = [];
-    for (var i = arr.length; i < settings.circles; ++i) {
-        var circ = new Circle();
-        arr.push(circ);
-    }
-    for (var i = 0; i < can.width; i += settings["grid size"]) {
-        grid.push([]);
-        for (var j = 0; j < can.height; j += settings["grid size"]) {
+    g.add(settings, "
+    g.addtx.closePath(); += settings["grid size"]) {
             grid[i / settings["grid size"]].push(0.0);
         }
     }
@@ -245,31 +194,5 @@ can.ontouchmove = function(e){
                         x: e.clientX,
                         y: e.clientY
                     }
-            }, i * settings.delay);
-        }
-        timeout(i);
-    }
-}
-
-can.onmousemove = function (e) {
-    for (var i = 0; i < settings.circles; ++i) {
-        function timeout(i) {
-            setTimeout(function () {
-                if (i < window.arr.length)
-                    window.arr[i].target = {
-                        x: e.clientX,
-                        y: e.clientY
-                    }
-            }, i * settings.delay);
-        }
-        timeout(i);
-    }
-};
-resize();
-requestAnimationFrame(draw);
-setTimeout(function(){
-	drag = 50;
-},2000)
-  </script>
- </BODY>
+            }, i * settings.del
 </HTML>
